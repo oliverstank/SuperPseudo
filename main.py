@@ -41,7 +41,6 @@ class SuperPseudoPlugin(ida_idaapi.plugin_t):
     comment = "Recursively inline function calls in pseudocode"
     help = "Super Pseudo - Inline all function calls recursively"
     wanted_name = "Super Pseudo"
-    wanted_hotkey = "Ctrl-Shift-I"
 
     def __init__(self):
         ida_idaapi.plugin_t.__init__(self)
