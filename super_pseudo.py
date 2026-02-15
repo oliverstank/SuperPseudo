@@ -9,6 +9,7 @@ import ida_funcs
 import ida_lines
 import idc
 from ida_hexrays import *
+from blacklist import blacklist_contains
 
 try:
     from . import config
@@ -171,7 +172,8 @@ class SuperPseudoGenerator:
                         base_name = func_name.split('.')[-1].split('_')[-1]
                         if len(base_name) > 3 and base_name in line_plain:
                             should_inline = True
-
+                    if (blacklist_contains(func_name)):
+                        should_inline = False
                     if should_inline and func_ea not in inlined_on_line:
                         inlined_on_line.add(func_ea)
                         self.inline_count += 1

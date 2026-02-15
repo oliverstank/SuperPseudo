@@ -12,6 +12,7 @@ Super Pseudo is an IDA Pro plugin that leverages the Hex-Rays decompiler to recu
 - **Cycle Detection**: Prevents infinite recursion by tracking visited functions
 - **Configurable Depth**: Control inlining depth (default: 3 levels)
 - **AST-Based Analysis**: Uses Hex-Rays ctree visitor for accurate function call detection
+- **Adjustable Inlining Range**: Prevent inlining selected functions (e.g. standard library calls like `fwrite()`)
   
 ![gif](./gif.gif)
 
@@ -23,7 +24,7 @@ Super Pseudo is an IDA Pro plugin that leverages the Hex-Rays decompiler to recu
 
 ## Installation
 
-place into the plugin DIR
+Place the directory into the `plugins/` directory of your IDA path
 
 ## Usage
 
@@ -112,6 +113,10 @@ PRESERVE_SYNTAX_HIGHLIGHTING = True
 **PRESERVE_SYNTAX_HIGHLIGHTING** (default: True)
 - When True: Output preserves IDA's color-coded syntax highlighting
 - When False: Output is plain text
+
+### Blacklist configuration
+You can exclude the function from inlining by selecting it (placing the cursor before the opening bracket)
+and pressing `Ctrl+Shift+J` or choosing *"Super Pseudo > Toggle Inline Block"* from the context menu. You can also manually manage the blacklist by modyfying the JSON structure of `./sp_blacklist.json`, where `.` is the directory with your currently decompiled file.
 
 ### Quick Start Configurations
 
